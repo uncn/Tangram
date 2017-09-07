@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sunzn.tangram.sample.MainActivity">
+
+    <com.sunzn.tangram.library.view.RecyclerCompatView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:FooterDone="@layout/state_view_done"
+        app:FooterFail="@layout/state_view_fail"
+        app:FooterLoad="@layout/state_view_load" />
+
+</RelativeLayout>

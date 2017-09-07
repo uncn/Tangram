@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="RecyclerCompatView">
+        <attr name="FooterLoad" format="reference" />
+        <attr name="FooterFail" format="reference" />
+        <attr name="FooterDone" format="reference" />
+    </declare-styleable>
+
+</resources>
