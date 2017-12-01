@@ -1,9 +1,7 @@
 package com.sunzn.tangram.library.holder;
 
 import android.view.View;
-import android.widget.Toast;
 import android.widget.ViewAnimator;
-
 
 import com.sunzn.tangram.library.adapter.RecyclerWarpAdapter;
 import com.sunzn.tangram.library.bean.BaseViewBean;
@@ -16,7 +14,7 @@ import static com.sunzn.tangram.library.adapter.RecyclerWarpAdapter.FOOT_STATE_L
  * Created by sunzn on 2017/9/6.
  */
 
-public class FootViewHolder extends BaseViewHolder implements View.OnClickListener {
+public class FootViewHolder extends BaseViewHolder {
 
     public FootViewHolder(View itemView) {
         super(itemView);
@@ -24,7 +22,6 @@ public class FootViewHolder extends BaseViewHolder implements View.OnClickListen
 
     @Override
     public void setUpView(BaseViewBean model, int position, RecyclerWarpAdapter adapter) {
-        itemView.setOnClickListener(this);
         switch (adapter.getFootState()) {
             case FOOT_STATE_LOAD:
                 itemView.setClickable(false);
@@ -39,11 +36,6 @@ public class FootViewHolder extends BaseViewHolder implements View.OnClickListen
                 ((ViewAnimator) itemView).setDisplayedChild(FOOT_STATE_DONE);
                 break;
         }
-    }
-
-    @Override
-    public void onClick(View v) {
-        Toast.makeText(v.getContext(), "点击", Toast.LENGTH_SHORT).show();
     }
 
 }

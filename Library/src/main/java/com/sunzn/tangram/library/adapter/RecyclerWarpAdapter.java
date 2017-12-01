@@ -8,12 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ViewAnimator;
 
-
 import com.sunzn.tangram.library.R;
 import com.sunzn.tangram.library.annotation.LayoutAnnotation;
+import com.sunzn.tangram.library.bean.BaseViewBean;
 import com.sunzn.tangram.library.holder.BaseViewHolder;
 import com.sunzn.tangram.library.holder.FootViewHolder;
-import com.sunzn.tangram.library.bean.BaseViewBean;
+import com.sunzn.tangram.library.interfaces.FooterClickListener;
 import com.sunzn.tangram.library.interfaces.GridSpanSizeListener;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import java.util.List;
  * Created by sunzn on 2016/12/27.
  */
 
-public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends RecyclerView.Adapter<BaseViewHolder> {
+public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends RecyclerView.Adapter<BaseViewHolder> implements View.OnClickListener {
 
     public static final int FOOT_STATE_LOAD = 0;
     public static final int FOOT_STATE_FAIL = 1;
@@ -39,6 +39,8 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
     private List<T> mBeans;
 
     private GridSpanSizeListener mSpanSizeListener;
+
+    private FooterClickListener mFooterClickListener;
 
     private ArrayList<Integer> mFoots = new ArrayList<>();
 
@@ -56,6 +58,20 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
 
     public void setSpanSizeListener(GridSpanSizeListener listener) {
         mSpanSizeListener = listener;
+    }
+
+    public void setFooterClickListener(FooterClickListener listener) {
+        mFooterClickListener = listener;
+    }
+
+    public void setFootStateLoad() {
+        setFootVisible(true);
+        setFootState(FOOT_STATE_LOAD);
+    }
+
+    public void setFootStateFail() {
+        setFootVisible(true);
+        setFootState(FOOT_STATE_FAIL);
     }
 
     public void setTerminal() {
@@ -107,6 +123,11 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
     public abstract BaseViewHolder onCreateViewHolder(int viewType, View itemView);
 
     @Override
+    public void onClick(View view) {
+        if (mFooterClickListener != null) mFooterClickListener.onFooterClick();
+    }
+
+    @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType != VIEW_TYPE_FOOT) {
             Context context = parent.getContext();
@@ -116,6 +137,7 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
             Context context = parent.getContext();
             View itemView = LayoutInflater.from(context).inflate(R.layout.foot_holder, parent, false);
             matchFootView((ViewAnimator) itemView, context, parent);
+            itemView.setOnClickListener(this);
             return new FootViewHolder(itemView);
         }
     }

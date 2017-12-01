@@ -57,22 +57,30 @@ public class RecyclerCompatView extends RecyclerView {
         mAdapter = adapter;
     }
 
-    public <T extends BaseViewBean> void setLoadFinish(ArrayList<T> beans) {
+    public <T extends BaseViewBean> void setSuccess(ArrayList<T> beans) {
         mAdapter.addBeans(beans);
         getAdapter().notifyDataSetChanged();
         setProcess(false);
     }
 
-    public void setTerminal() {
+    public void setLoading() {
+        setHasMore(true);
+        setProcess(true);
+        mAdapter.setFootStateLoad();
+        getAdapter().notifyDataSetChanged();
+    }
+
+    public void setFailure() {
+        setProcess(true);
+        mAdapter.setFootStateFail();
+        getAdapter().notifyDataSetChanged();
+    }
+
+    public void setClosure() {
         setHasMore(false);
         setProcess(false);
         mAdapter.setTerminal();
-        postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                getAdapter().notifyDataSetChanged();
-            }
-        }, 300);
+        getAdapter().notifyDataSetChanged();
     }
 
     public void setHasMore(boolean more) {
@@ -94,24 +102,26 @@ public class RecyclerCompatView extends RecyclerView {
                 @Override
                 public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                     super.onScrollStateChanged(recyclerView, newState);
-                }
-
-                @Override
-                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                    super.onScrolled(recyclerView, dx, dy);
                     if (hasMore) {
                         LayoutManager manager = getLayoutManager();
                         int end, tot;
                         end = ((LinearLayoutManager) manager).findLastVisibleItemPosition();
                         tot = getAdapter().getItemCount();
 
-                        Log.e("sunzn", "end = " + end + "--------- tot = " + tot + "--------- isProcess = " + isProcess);
+                        Log.e("Tangram", "end = " + end + "--------- tot = " + tot + "--------- isProcess = " + isProcess);
 
                         if (mLoadMoreListener != null && !isProcess && end >= tot - 1) {
-                            isProcess = true;
-                            mLoadMoreListener.onLoadMore();
+                            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                                isProcess = true;
+                                mLoadMoreListener.onLoadMore();
+                            }
                         }
                     }
+                }
+
+                @Override
+                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                    super.onScrolled(recyclerView, dx, dy);
                 }
             });
         }
