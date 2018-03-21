@@ -2,27 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@android:color/white"
     android:gravity="center"
-    android:orientation="horizontal">
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginEnd="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginStart="10dp"
+        android:background="#E0E0E0" />
 
     <TextView
         android:id="@+id/item_tv"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:minHeight="50dp"
         android:orientation="vertical"
-        android:text="foot" />
-
-    <View
-        android:layout_width="1dp"
-        android:layout_height="100dp"
-        android:background="@color/colorPrimary" />
-
-    <ImageView
-        android:id="@+id/item_iv"
-        android:layout_width="75dp"
-        android:layout_height="100dp"
-        android:background="@android:color/white"
-        android:src="@mipmap/ic_launcher" />
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp"
+        android:textColor="@color/c323232"
+        android:text="foot"
+        android:textSize="17sp" />
 
 </LinearLayout>

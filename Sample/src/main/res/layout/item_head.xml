@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/head_holder"
+    style="@style/HomeModuleBar">
+
+    <TextView
+        android:id="@+id/head_tv"
+        style="@style/HomeModuleTitle"
+        android:text="期刊" />
+
+    <TextView
+        style="@style/HomeModuleMore"
+        android:text="全部"
+        android:visibility="visible" />
+</RelativeLayout>

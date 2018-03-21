@@ -8,4 +8,37 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- 首页模块标题容器样式 -->
+    <style name="HomeModuleBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:background">@android:color/white</item>
+    </style>
+
+    <!-- 首页模块标题样式 -->
+    <style name="HomeModuleTitle">
+        <item name="android:drawableLeft">@drawable/block_icon</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/c3560E0</item>
+        <item name="android:drawablePadding">5dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <!-- 首页模块更多样式 -->
+    <style name="HomeModuleMore">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textColor">@color/c7C7C7C</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
 </resources>
