@@ -19,19 +19,35 @@ public class FootViewHolder extends BaseViewHolder<Foot, RecyclerAdapter> {
 
     private Context context;
 
-    public FootViewHolder(View itemView) {
-        super(itemView);
+    public FootViewHolder(View itemView, RecyclerAdapter adapter) {
+        super(itemView, adapter);
         context = itemView.getContext();
     }
 
     @Override
-    public void setUpView(Foot model, int position, RecyclerAdapter adapter) {
+    public void bindView(Foot model, int position, RecyclerAdapter adapter) {
+
+        View holder = getView(R.id.foot_holder);
+        holder.setPadding(20, 0, 20, 0);
+
         TextView view = (TextView) getView(R.id.foot_tv);
         ImageView image = (ImageView) getView(R.id.foot_iv);
         view.setText("Foot item" + position);
 
-
-        Glide.with(context).load("http://c61.cnki.net/CJFD/big/CWSJ/CWSJ201707.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+        switch (position % 4) {
+            case 0:
+                Glide.with(context).load("http://e.bianke.cnki.net/Home/GetCorpusPic/20171130130559602_small_.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                break;
+            case 1:
+                Glide.with(context).load("http://e.bianke.cnki.net/Home/GetCorpusPic/20171018112722939_small_.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                break;
+            case 2:
+                Glide.with(context).load("http://e.bianke.cnki.net/Home/GetCorpusPic/20171106151140138_small_.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                break;
+            case 3:
+                Glide.with(context).load("http://e.bianke.cnki.net/Home/GetCorpusPic/20170825152648241_small_.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                break;
+        }
     }
 
 }

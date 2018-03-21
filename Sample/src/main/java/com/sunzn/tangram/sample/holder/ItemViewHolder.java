@@ -17,20 +17,14 @@ import com.sunzn.tangram.sample.bean.Item;
 
 public class ItemViewHolder extends BaseViewHolder<Item, RecyclerAdapter> {
 
-    private Context context;
-
-    public ItemViewHolder(View itemView) {
-        super(itemView);
-        context = itemView.getContext();
+    public ItemViewHolder(View itemView, RecyclerAdapter adapter) {
+        super(itemView, adapter);
     }
 
     @Override
-    public void setUpView(Item model, int position, RecyclerAdapter adapter) {
+    public void bindView(Item model, int position, RecyclerAdapter adapter) {
         TextView view = (TextView) getView(R.id.item_tv);
         view.setText("item" + position);
-
-        ImageView image = (ImageView) getView(R.id.item_iv);
-        Glide.with(context).load("http://c61.cnki.net/CJFD/big/YLYL/YLYL201523.jpg").placeholder(R.mipmap.ic_launcher).into(image);
     }
 
 }
