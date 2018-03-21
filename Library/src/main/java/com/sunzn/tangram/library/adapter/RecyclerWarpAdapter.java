@@ -138,16 +138,16 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
             View itemView = LayoutInflater.from(context).inflate(R.layout.foot_holder, parent, false);
             matchFootView((ViewAnimator) itemView, context, parent);
             itemView.setOnClickListener(this);
-            return new FootViewHolder(itemView);
+            return new FootViewHolder(itemView, this);
         }
     }
 
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
         if (position < getBeanCount()) {
-            holder.setUpView(mBeans.get(position), position, this);
+            holder.bindView(mBeans.get(position), position, this);
         } else {
-            holder.setUpView(null, position, this);
+            holder.bindView(null, position, this);
         }
     }
 
