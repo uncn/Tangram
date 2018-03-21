@@ -4,13 +4,14 @@ import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 
 import com.sunzn.tangram.library.adapter.RecyclerWarpAdapter;
-import com.sunzn.tangram.library.holder.BaseViewHolder;
 import com.sunzn.tangram.library.bean.BaseViewBean;
+import com.sunzn.tangram.library.holder.BaseViewHolder;
 import com.sunzn.tangram.library.interfaces.GridSpanSizeListener;
 import com.sunzn.tangram.sample.holder.DoneViewHolder;
 import com.sunzn.tangram.sample.holder.FootViewHolder;
 import com.sunzn.tangram.sample.holder.HeadViewHolder;
 import com.sunzn.tangram.sample.holder.ItemViewHolder;
+import com.sunzn.tangram.sample.holder.LineViewHolder;
 
 import java.util.List;
 
@@ -28,14 +29,16 @@ public class RecyclerAdapter extends RecyclerWarpAdapter implements GridSpanSize
     @Override
     public BaseViewHolder onCreateViewHolder(int viewType, View itemView) {
         switch (viewType) {
-            case R.layout.head:
-                return new HeadViewHolder(itemView);
+            case R.layout.item_head:
+                return new HeadViewHolder(itemView, this);
             case R.layout.item:
-                return new ItemViewHolder(itemView);
+                return new ItemViewHolder(itemView, this);
             case R.layout.foot:
-                return new FootViewHolder(itemView);
+                return new FootViewHolder(itemView, this);
             case R.layout.done:
-                return new DoneViewHolder(itemView);
+                return new DoneViewHolder(itemView, this);
+            case R.layout.line:
+                return new LineViewHolder(itemView, this);
         }
         return null;
     }
@@ -43,7 +46,7 @@ public class RecyclerAdapter extends RecyclerWarpAdapter implements GridSpanSize
     @Override
     public int onGetSpanCount(int viewType, GridLayoutManager manager) {
         switch (viewType) {
-            case R.layout.head:
+            case R.layout.item_head:
                 return manager.getSpanCount();
             case R.layout.item:
                 return manager.getSpanCount();
@@ -51,6 +54,8 @@ public class RecyclerAdapter extends RecyclerWarpAdapter implements GridSpanSize
                 return 3;
             case R.layout.done:
                 return 2;
+            case R.layout.line:
+                return manager.getSpanCount();
         }
         return manager.getSpanCount();
     }
