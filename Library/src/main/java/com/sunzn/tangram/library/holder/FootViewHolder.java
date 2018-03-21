@@ -16,12 +16,12 @@ import static com.sunzn.tangram.library.adapter.RecyclerWarpAdapter.FOOT_STATE_L
 
 public class FootViewHolder extends BaseViewHolder {
 
-    public FootViewHolder(View itemView) {
-        super(itemView);
+    public FootViewHolder(View itemView, RecyclerWarpAdapter adapter) {
+        super(itemView, adapter);
     }
 
     @Override
-    public void setUpView(BaseViewBean model, int position, RecyclerWarpAdapter adapter) {
+    public void bindView(BaseViewBean model, int position, RecyclerWarpAdapter adapter) {
         switch (adapter.getFootState()) {
             case FOOT_STATE_LOAD:
                 itemView.setClickable(false);
