@@ -16,7 +16,7 @@ public abstract class BaseViewHolder<T1 extends BaseViewBean, T2 extends Recycle
     private SparseArray<View> mViews;
     private View mItemView;
 
-    public BaseViewHolder(View itemView) {
+    public BaseViewHolder(View itemView, T2 adapter) {
         super(itemView);
         mViews = new SparseArray<>();
         this.mItemView = itemView;
@@ -33,6 +33,6 @@ public abstract class BaseViewHolder<T1 extends BaseViewBean, T2 extends Recycle
         return view;
     }
 
-    public abstract void setUpView(T1 model, int position, T2 adapter);
+    public abstract void bindView(T1 model, int position, T2 adapter);
 
 }
