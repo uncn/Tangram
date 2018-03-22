@@ -56,6 +56,10 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
         }
     }
 
+    public T getItem(int position) {
+        return mBeans.get(position);
+    }
+
     public void setSpanSizeListener(GridSpanSizeListener listener) {
         mSpanSizeListener = listener;
     }
