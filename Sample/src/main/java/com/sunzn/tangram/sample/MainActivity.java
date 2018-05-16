@@ -1,10 +1,9 @@
 package com.sunzn.tangram.sample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.sunzn.tangram.library.bean.BaseViewBean;
 import com.sunzn.tangram.library.interfaces.FooterClickListener;
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        rv = (RecyclerCompatView) findViewById(R.id.rv);
+        rv = findViewById(R.id.rv);
 
 
         beans = new ArrayList<>();
@@ -103,8 +102,7 @@ public class MainActivity extends AppCompatActivity {
             beans.add(new Done());
         }
 
-//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
-//        rv.setLayoutManager(mLayoutManager);
+//        rv.setLayoutManager(new LinearLayoutManager(this));
 
         rv.setLayoutManager(new GridLayoutManager(this, 6));
 
