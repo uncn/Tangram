@@ -36,16 +36,16 @@ public class FootViewHolder extends BaseViewHolder<Foot, RecyclerAdapter> {
 
         switch (position % 4) {
             case 0:
-                Glide.with(context).load("http://e.bianke.cnki.net/Home/GetCorpusPic/20171130130559602_small_.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                Glide.with(context).load("http://e.bianke.cnki.net/Home/GetCorpusPic/20171130130559602_small_.jpg").into(image);
                 break;
             case 1:
-                Glide.with(context).load("http://e.bianke.cnki.net/Home/GetCorpusPic/20171018112722939_small_.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                Glide.with(context).load("http://e.bianke.cnki.net/Home/GetCorpusPic/20171018112722939_small_.jpg").into(image);
                 break;
             case 2:
-                Glide.with(context).load("http://e.bianke.cnki.net/Home/GetCorpusPic/20171106151140138_small_.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                Glide.with(context).load("http://e.bianke.cnki.net/Home/GetCorpusPic/20171106151140138_small_.jpg").into(image);
                 break;
             case 3:
-                Glide.with(context).load("http://e.bianke.cnki.net/Home/GetCorpusPic/20170825152648241_small_.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                Glide.with(context).load("http://e.bianke.cnki.net/Home/GetCorpusPic/20170825152648241_small_.jpg").into(image);
                 break;
         }
     }

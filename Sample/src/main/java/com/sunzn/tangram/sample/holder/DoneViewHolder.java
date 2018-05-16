@@ -36,31 +36,31 @@ public class DoneViewHolder extends BaseViewHolder<Done, RecyclerAdapter> {
         ImageView image = (ImageView) getView(R.id.done_iv);
         switch (position % 9) {
             case 0:
-                Glide.with(context).load("http://c61.cnki.net/CJFD/big/JJZK/JJZK201739.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                Glide.with(context).load("http://c61.cnki.net/CJFD/big/JJZK/JJZK201739.jpg").into(image);
                 break;
             case 1:
-                Glide.with(context).load("http://c61.cnki.net/CJFD/big/JJZK/JJZK201742.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                Glide.with(context).load("http://c61.cnki.net/CJFD/big/JJZK/JJZK201742.jpg").into(image);
                 break;
             case 2:
-                Glide.with(context).load("http://c61.cnki.net/CJFD/big/JJZK/JJZK201744.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                Glide.with(context).load("http://c61.cnki.net/CJFD/big/JJZK/JJZK201744.jpg").into(image);
                 break;
             case 3:
-                Glide.with(context).load("http://c61.cnki.net/CJFD/big/WMIA/WMIA201779.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                Glide.with(context).load("http://c61.cnki.net/CJFD/big/WMIA/WMIA201779.jpg").into(image);
                 break;
             case 4:
-                Glide.with(context).load("http://c61.cnki.net/CJFD/big/FAIZ/FAIZ201710.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                Glide.with(context).load("http://c61.cnki.net/CJFD/big/FAIZ/FAIZ201710.jpg").into(image);
                 break;
             case 5:
-                Glide.with(context).load("http://c61.cnki.net/CJFD/big/XDFL/XDFL201710.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                Glide.with(context).load("http://c61.cnki.net/CJFD/big/XDFL/XDFL201710.jpg").into(image);
                 break;
             case 6:
-                Glide.with(context).load("http://c61.cnki.net/CJFD/big/GJRZ/GJRZ201708.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                Glide.with(context).load("http://c61.cnki.net/CJFD/big/GJRZ/GJRZ201708.jpg").into(image);
                 break;
             case 7:
-                Glide.with(context).load("http://c61.cnki.net/CJFD/big/HQDL/HQDL201313.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                Glide.with(context).load("http://c61.cnki.net/CJFD/big/HQDL/HQDL201313.jpg").into(image);
                 break;
             case 8:
-                Glide.with(context).load("http://c61.cnki.net/CJFD/big/NBAT/NBAT201209.jpg").placeholder(R.mipmap.ic_launcher).into(image);
+                Glide.with(context).load("http://c61.cnki.net/CJFD/big/NBAT/NBAT201209.jpg").into(image);
                 break;
         }
     }
