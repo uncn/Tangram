@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 
-
 import com.sunzn.tangram.library.R;
 import com.sunzn.tangram.library.adapter.RecyclerWarpAdapter;
 import com.sunzn.tangram.library.bean.BaseViewBean;
@@ -104,13 +103,13 @@ public class RecyclerCompatView extends RecyclerView {
                     super.onScrollStateChanged(recyclerView, newState);
                     if (hasMore) {
                         LayoutManager manager = getLayoutManager();
-                        int end, tot;
+                        int end, total;
                         end = ((LinearLayoutManager) manager).findLastVisibleItemPosition();
-                        tot = getAdapter().getItemCount();
+                        total = getAdapter().getItemCount();
 
-                        Log.e("Tangram", "end = " + end + "--------- tot = " + tot + "--------- isProcess = " + isProcess);
+                        Log.e("Tangram", "end = " + end + "--------- tot = " + total + "--------- isProcess = " + isProcess);
 
-                        if (mLoadMoreListener != null && !isProcess && end >= tot - 1) {
+                        if (mLoadMoreListener != null && !isProcess && end >= total - 1) {
                             if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                                 isProcess = true;
                                 mLoadMoreListener.onLoadMore();
@@ -124,6 +123,8 @@ public class RecyclerCompatView extends RecyclerView {
                     super.onScrolled(recyclerView, dx, dy);
                 }
             });
+        } else {
+            throw new IllegalArgumentException("init ScrollListener must set FooterLoad, FooterFail, FooterDone attribute");
         }
     }
 
