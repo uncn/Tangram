@@ -1,6 +1,7 @@
 package com.sunzn.tangram.library.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -26,13 +27,15 @@ import java.util.List;
 
 public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends RecyclerView.Adapter<BaseViewHolder> implements View.OnClickListener {
 
+    public abstract BaseViewHolder onCreateViewHolder(int viewType, View itemView);
+
     public static final int FOOT_STATE_LOAD = 0;
     public static final int FOOT_STATE_FAIL = 1;
     public static final int FOOT_STATE_DONE = 2;
 
     public static final int VIEW_TYPE_FOOT = -1;
 
-    private int mCurFootState = 0;
+    private int mCurFootState = FOOT_STATE_LOAD;
 
     private boolean isFootVisible = true;
 
@@ -124,15 +127,14 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
         mFoots.addAll(ids);
     }
 
-    public abstract BaseViewHolder onCreateViewHolder(int viewType, View itemView);
-
     @Override
     public void onClick(View view) {
         if (mFooterClickListener != null) mFooterClickListener.onFooterClick();
     }
 
+    @NonNull
     @Override
-    public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType != VIEW_TYPE_FOOT) {
             Context context = parent.getContext();
             View itemView = LayoutInflater.from(context).inflate(viewType, parent, false);
@@ -147,7 +149,7 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
     }
 
     @Override
-    public void onBindViewHolder(BaseViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
         if (position < getBeanCount()) {
             holder.bindView(mBeans.get(position), position, this);
         } else {
@@ -174,7 +176,7 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
                     LayoutPool.put(clazz, value);
                     return value;
                 } else {
-                    return 0;
+                    throw new IllegalArgumentException(clazz.getName() + " should be declared by LayoutAnnotation to bind item layout.");
                 }
             }
         } else {
@@ -184,7 +186,7 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
     }
 
     @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
+    public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
         RecyclerView.LayoutManager manager = recyclerView.getLayoutManager();
         if (manager instanceof GridLayoutManager) {
