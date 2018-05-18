@@ -22,7 +22,7 @@ public abstract class BaseViewHolder<T1 extends BaseViewBean, T2 extends Recycle
         this.mItemView = itemView;
     }
 
-    public View getView(int resID) {
+    public <T extends View> T getView(int resID) {
         View view = mViews.get(resID);
 
         if (view == null) {
@@ -30,7 +30,7 @@ public abstract class BaseViewHolder<T1 extends BaseViewBean, T2 extends Recycle
             mViews.put(resID, view);
         }
 
-        return view;
+        return (T) view;
     }
 
     public abstract void bindView(T1 model, int position, T2 adapter);
