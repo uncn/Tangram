@@ -49,11 +49,19 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
 
     private HashMap<Class, Integer> LayoutPool = new HashMap<>();
 
+    public RecyclerWarpAdapter() {
+        super();
+    }
+
     public RecyclerWarpAdapter(List<T> beans) {
         mBeans = beans;
     }
 
-    public void addBeans(List<T> beans) {
+    public void setData(List<T> beans) {
+        mBeans = beans;
+    }
+
+    public void addData(List<T> beans) {
         if (beans != null && beans.size() > 0) {
             mBeans.addAll(beans);
         }
