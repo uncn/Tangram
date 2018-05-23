@@ -57,7 +57,7 @@ public class RecyclerCompatView extends RecyclerView {
     }
 
     public <T extends BaseViewBean> void setSuccess(ArrayList<T> beans) {
-        mAdapter.addBeans(beans);
+        mAdapter.addData(beans);
         getAdapter().notifyDataSetChanged();
         setProcess(false);
     }
