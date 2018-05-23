@@ -106,8 +106,10 @@ public class MainActivity extends AppCompatActivity {
 
         rv.setLayoutManager(new GridLayoutManager(this, 6));
 
-        adapter = new RecyclerAdapter(beans);
+//        adapter = new RecyclerAdapter(beans);
 
+        adapter = new RecyclerAdapter();
+        adapter.setData(beans);
 
         adapter.setFooterClickListener(new FooterClickListener() {
             @Override
