@@ -21,6 +21,11 @@ import java.util.List;
 
 public class RecyclerAdapter extends RecyclerWarpAdapter implements GridSpanSizeListener {
 
+    public RecyclerAdapter() {
+        super();
+        setSpanSizeListener(this);
+    }
+
     public RecyclerAdapter(List<BaseViewBean> beans) {
         super(beans);
         setSpanSizeListener(this);
