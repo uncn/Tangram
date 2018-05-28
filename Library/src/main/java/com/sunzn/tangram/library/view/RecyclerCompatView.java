@@ -14,6 +14,7 @@ import com.sunzn.tangram.library.bean.BaseViewBean;
 import com.sunzn.tangram.library.interfaces.LoadMoreListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by sunzn on 2017/9/5.
@@ -56,7 +57,7 @@ public class RecyclerCompatView extends RecyclerView {
         mAdapter = adapter;
     }
 
-    public <T extends BaseViewBean> void setSuccess(ArrayList<T> beans) {
+    public <T extends BaseViewBean> void setSuccess(List<T> beans) {
         mAdapter.addData(beans);
         getAdapter().notifyDataSetChanged();
         setProcess(false);
