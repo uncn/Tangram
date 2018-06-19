@@ -104,9 +104,8 @@ public class RecyclerCompatView extends RecyclerView {
                     super.onScrollStateChanged(recyclerView, newState);
                     if (hasMore) {
                         LayoutManager manager = getLayoutManager();
-                        int end, total;
-                        end = ((LinearLayoutManager) manager).findLastVisibleItemPosition();
-                        total = getAdapter().getItemCount();
+                        int end = ((LinearLayoutManager) manager).findLastVisibleItemPosition();
+                        int total = getAdapter().getItemCount();
 
                         Log.e("Tangram", "end = " + end + "--------- tot = " + total + "--------- isProcess = " + isProcess);
 
