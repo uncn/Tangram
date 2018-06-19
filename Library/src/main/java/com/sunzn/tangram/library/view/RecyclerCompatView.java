@@ -111,10 +111,8 @@ public class RecyclerCompatView extends RecyclerView {
                         Log.e("Tangram", "end = " + end + "--------- tot = " + total + "--------- isProcess = " + isProcess);
 
                         if (mLoadMoreListener != null && !isProcess && end >= total - 1) {
-                            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                                isProcess = true;
-                                mLoadMoreListener.onLoadMore();
-                            }
+                            isProcess = true;
+                            mLoadMoreListener.onLoadMore();
                         }
                     }
                 }
