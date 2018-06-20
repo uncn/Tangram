@@ -102,23 +102,23 @@ public class RecyclerCompatView extends RecyclerView {
                 @Override
                 public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                     super.onScrollStateChanged(recyclerView, newState);
-                    if (hasMore) {
-                        LayoutManager manager = getLayoutManager();
-                        int end = ((LinearLayoutManager) manager).findLastVisibleItemPosition();
-                        int total = getAdapter().getItemCount();
-
-                        Log.e("Tangram", "end = " + end + "--------- tot = " + total + "--------- isProcess = " + isProcess);
-
-                        if (mLoadMoreListener != null && !isProcess && end >= total - 1) {
-                            isProcess = true;
-                            mLoadMoreListener.onLoadMore();
-                        }
-                    }
                 }
 
                 @Override
                 public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                     super.onScrolled(recyclerView, dx, dy);
+                    if (mLoadMoreListener != null && !isProcess && hasMore) {
+                        LayoutManager manager = getLayoutManager();
+                        int last = ((LinearLayoutManager) manager).findLastVisibleItemPosition();
+                        int total = getAdapter().getItemCount();
+
+                        Log.e("Tangram", "【最后可见 = " + last + "】【总数 = " + total + "】【是否加载中 = " + isProcess + "】");
+
+                        if (last >= total - 1) {
+                            isProcess = true;
+                            mLoadMoreListener.onLoadMore();
+                        }
+                    }
                 }
             });
         } else {
