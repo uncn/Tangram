@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.sunzn.tangram.library.holder.BaseViewHolder;
+import com.sunzn.tangram.library.holder.TangramViewHolder;
 import com.sunzn.tangram.sample.R;
 import com.sunzn.tangram.sample.RecyclerAdapter;
 import com.sunzn.tangram.sample.bean.Done;
@@ -15,7 +15,7 @@ import com.sunzn.tangram.sample.bean.Done;
  * Created by sunzn on 2017/9/5.
  */
 
-public class DoneViewHolder extends BaseViewHolder<Done, RecyclerAdapter> {
+public class DoneViewHolder extends TangramViewHolder<Done, RecyclerAdapter> {
 
     private Context context;
 
@@ -30,10 +30,10 @@ public class DoneViewHolder extends BaseViewHolder<Done, RecyclerAdapter> {
         View holder = getView(R.id.done_holder);
         holder.setPadding(20, 0, 20, 0);
 
-        TextView view = (TextView) getView(R.id.done_tv);
+        TextView view = getView(R.id.done_tv);
         view.setText("item" + position);
 
-        ImageView image = (ImageView) getView(R.id.done_iv);
+        ImageView image = getView(R.id.done_iv);
         switch (position % 9) {
             case 0:
                 Glide.with(context).load("http://c61.cnki.net/CJFD/big/JJZK/JJZK201739.jpg").into(image);

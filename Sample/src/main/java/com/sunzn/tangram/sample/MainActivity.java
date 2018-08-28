@@ -5,10 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.util.Log;
 
-import com.sunzn.tangram.library.bean.BaseViewBean;
+import com.sunzn.tangram.library.bean.TangramBean;
 import com.sunzn.tangram.library.interfaces.FooterClickListener;
 import com.sunzn.tangram.library.interfaces.LoadMoreListener;
-import com.sunzn.tangram.library.view.RecyclerCompatView;
+import com.sunzn.tangram.library.view.TangramView;
 import com.sunzn.tangram.sample.bean.Done;
 import com.sunzn.tangram.sample.bean.Foot;
 import com.sunzn.tangram.sample.bean.Head;
@@ -20,8 +20,8 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RecyclerCompatView rv;
-    private ArrayList<BaseViewBean> beans;
+    private TangramView rv;
+    private ArrayList<TangramBean> beans;
     private RecyclerAdapter adapter;
 
     int x = 0;
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadData() {
 
-        final ArrayList<BaseViewBean> s = new ArrayList<>();
+        final ArrayList<TangramBean> s = new ArrayList<>();
 
         Random random = new java.util.Random();
         int result = random.nextInt(10);

@@ -3,9 +3,9 @@ package com.sunzn.tangram.sample;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 
-import com.sunzn.tangram.library.adapter.RecyclerWarpAdapter;
-import com.sunzn.tangram.library.bean.BaseViewBean;
-import com.sunzn.tangram.library.holder.BaseViewHolder;
+import com.sunzn.tangram.library.adapter.TangramAdapter;
+import com.sunzn.tangram.library.bean.TangramBean;
+import com.sunzn.tangram.library.holder.TangramViewHolder;
 import com.sunzn.tangram.library.interfaces.GridSpanSizeListener;
 import com.sunzn.tangram.sample.holder.DoneViewHolder;
 import com.sunzn.tangram.sample.holder.FootViewHolder;
@@ -19,20 +19,20 @@ import java.util.List;
  * Created by sunzn on 2017/9/6.
  */
 
-public class RecyclerAdapter extends RecyclerWarpAdapter implements GridSpanSizeListener {
+public class RecyclerAdapter extends TangramAdapter implements GridSpanSizeListener {
 
     public RecyclerAdapter() {
         super();
         setSpanSizeListener(this);
     }
 
-    public RecyclerAdapter(List<BaseViewBean> beans) {
+    public RecyclerAdapter(List<TangramBean> beans) {
         super(beans);
         setSpanSizeListener(this);
     }
 
     @Override
-    public BaseViewHolder onCreateViewHolder(int viewType, View itemView) {
+    public TangramViewHolder onCreateViewHolder(int viewType, View itemView) {
         switch (viewType) {
             case R.layout.item_head:
                 return new HeadViewHolder(itemView, this);

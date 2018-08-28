@@ -1,7 +1,7 @@
 package com.sunzn.tangram.sample.bean;
 
 import com.sunzn.tangram.library.annotation.LayoutAnnotation;
-import com.sunzn.tangram.library.bean.BaseViewBean;
+import com.sunzn.tangram.library.bean.TangramBean;
 import com.sunzn.tangram.sample.R;
 
 /**
@@ -9,7 +9,7 @@ import com.sunzn.tangram.sample.R;
  */
 
 @LayoutAnnotation(R.layout.item_head)
-public class Head extends BaseViewBean {
+public class Head extends TangramBean {
 
     private String name;
     private String pass;

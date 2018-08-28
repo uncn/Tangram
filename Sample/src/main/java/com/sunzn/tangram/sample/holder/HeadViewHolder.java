@@ -6,7 +6,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sunzn.tangram.library.holder.BaseViewHolder;
+import com.sunzn.tangram.library.holder.TangramViewHolder;
 import com.sunzn.tangram.sample.R;
 import com.sunzn.tangram.sample.RecyclerAdapter;
 import com.sunzn.tangram.sample.bean.Head;
@@ -15,7 +15,7 @@ import com.sunzn.tangram.sample.bean.Head;
  * Created by sunzn on 2017/9/5.
  */
 
-public class HeadViewHolder extends BaseViewHolder<Head, RecyclerAdapter> {
+public class HeadViewHolder extends TangramViewHolder<Head, RecyclerAdapter> {
 
     private Context context;
 

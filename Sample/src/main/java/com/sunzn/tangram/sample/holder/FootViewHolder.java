@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.sunzn.tangram.library.holder.BaseViewHolder;
+import com.sunzn.tangram.library.holder.TangramViewHolder;
 import com.sunzn.tangram.sample.R;
 import com.sunzn.tangram.sample.RecyclerAdapter;
 import com.sunzn.tangram.sample.bean.Foot;
@@ -15,7 +15,7 @@ import com.sunzn.tangram.sample.bean.Foot;
  * Created by sunzn on 2017/9/5.
  */
 
-public class FootViewHolder extends BaseViewHolder<Foot, RecyclerAdapter> {
+public class FootViewHolder extends TangramViewHolder<Foot, RecyclerAdapter> {
 
     private Context context;
 
@@ -30,8 +30,8 @@ public class FootViewHolder extends BaseViewHolder<Foot, RecyclerAdapter> {
         View holder = getView(R.id.foot_holder);
         holder.setPadding(20, 0, 20, 0);
 
-        TextView view = (TextView) getView(R.id.foot_tv);
-        ImageView image = (ImageView) getView(R.id.foot_iv);
+        TextView view = getView(R.id.foot_tv);
+        ImageView image = getView(R.id.foot_iv);
         view.setText("Foot item" + position);
 
         switch (position % 4) {
