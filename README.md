@@ -49,3 +49,30 @@ public class Item extends TangramBean {
 
 }
 ```
+
+**Step 3**. Create ItemViewHolder, set OnClickListener and bind the view
+
+```java
+public class ItemViewHolder extends TangramViewHolder<Item, RecyclerAdapter> {
+
+    private final String TAG = "ItemViewHolder";
+
+    public ItemViewHolder(final View itemView, RecyclerAdapter adapter) {
+        super(itemView, adapter);
+        TextView view = getView(R.id.item_tv);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "item:" + getAdapterPosition());
+            }
+        });
+    }
+
+    @Override
+    public void onBindViewHolder(Item model, int position, RecyclerAdapter adapter) {
+        TextView view = getView(R.id.item_tv);
+        view.setText("item" + position);
+    }
+
+}
+```
