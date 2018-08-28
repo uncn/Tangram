@@ -78,3 +78,55 @@ public class ItemViewHolder extends TangramViewHolder<Item, RecyclerAdapter> {
 
 }
 ```
+
+**Step 4**. Create RecyclerAdapter, create custom ViewHolder and set view's SpanCount
+
+```java
+public class RecyclerAdapter extends TangramAdapter implements GridSpanSizeListener {
+
+    public RecyclerAdapter() {
+        super();
+        setSpanSizeListener(this);
+    }
+
+    public RecyclerAdapter(List<TangramBean> beans) {
+        super(beans);
+        setSpanSizeListener(this);
+    }
+
+    @Override
+    public TangramViewHolder onCreateViewHolder(int viewType, View itemView) {
+        switch (viewType) {
+            case R.layout.item_head:
+                return new HeadViewHolder(itemView, this);
+            case R.layout.item:
+                return new ItemViewHolder(itemView, this);
+            case R.layout.foot:
+                return new FootViewHolder(itemView, this);
+            case R.layout.done:
+                return new DoneViewHolder(itemView, this);
+            case R.layout.line:
+                return new LineViewHolder(itemView, this);
+        }
+        return null;
+    }
+
+    @Override
+    public int onGetSpanCount(int viewType, GridLayoutManager manager) {
+        switch (viewType) {
+            case R.layout.item_head:
+                return manager.getSpanCount();
+            case R.layout.item:
+                return manager.getSpanCount();
+            case R.layout.foot:
+                return 3;
+            case R.layout.done:
+                return 2;
+            case R.layout.line:
+                return manager.getSpanCount();
+        }
+        return manager.getSpanCount();
+    }
+
+}
+```
