@@ -25,7 +25,7 @@ public class FootViewHolder extends TangramViewHolder<Foot, RecyclerAdapter> {
     }
 
     @Override
-    public void bindView(Foot model, int position, RecyclerAdapter adapter) {
+    public void onBindViewHolder(Foot model, int position, RecyclerAdapter adapter) {
 
         View holder = getView(R.id.foot_holder);
         holder.setPadding(20, 0, 20, 0);

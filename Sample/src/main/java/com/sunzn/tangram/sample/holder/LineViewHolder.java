@@ -17,7 +17,7 @@ public class LineViewHolder extends TangramViewHolder<Line, RecyclerAdapter> {
     }
 
     @Override
-    public void bindView(Line model, int position, RecyclerAdapter adapter) {
+    public void onBindViewHolder(Line model, int position, RecyclerAdapter adapter) {
 
     }
 

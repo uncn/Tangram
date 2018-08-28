@@ -25,7 +25,7 @@ public class DoneViewHolder extends TangramViewHolder<Done, RecyclerAdapter> {
     }
 
     @Override
-    public void bindView(Done model, int position, RecyclerAdapter adapter) {
+    public void onBindViewHolder(Done model, int position, RecyclerAdapter adapter) {
 
         View holder = getView(R.id.done_holder);
         holder.setPadding(20, 0, 20, 0);

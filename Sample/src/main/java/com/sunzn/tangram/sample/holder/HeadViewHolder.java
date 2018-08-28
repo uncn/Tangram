@@ -27,7 +27,7 @@ public class HeadViewHolder extends TangramViewHolder<Head, RecyclerAdapter> {
     }
 
     @Override
-    public void bindView(Head model, final int position, RecyclerAdapter adapter) {
+    public void onBindViewHolder(Head model, final int position, RecyclerAdapter adapter) {
         TextView view = (TextView) getView(R.id.head_tv);
         view.setText(model.getName());
 

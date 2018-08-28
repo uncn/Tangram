@@ -19,8 +19,8 @@ public class ItemViewHolder extends TangramViewHolder<Item, RecyclerAdapter> {
     }
 
     @Override
-    public void bindView(Item model, int position, RecyclerAdapter adapter) {
-        TextView view = (TextView) getView(R.id.item_tv);
+    public void onBindViewHolder(Item model, int position, RecyclerAdapter adapter) {
+        TextView view = getView(R.id.item_tv);
         view.setText("item" + position);
     }
 
