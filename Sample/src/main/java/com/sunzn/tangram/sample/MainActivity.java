@@ -20,7 +20,7 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TangramView rv;
+    private TangramView tangram;
     private ArrayList<TangramBean> beans;
     private RecyclerAdapter adapter;
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        rv = findViewById(R.id.rv);
+        tangram = findViewById(R.id.tangram);
 
 
         beans = new ArrayList<>();
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
 
 //        rv.setLayoutManager(new LinearLayoutManager(this));
 
-        rv.setLayoutManager(new GridLayoutManager(this, 6));
+        tangram.setLayoutManager(new GridLayoutManager(this, 6));
 
 //        adapter = new RecyclerAdapter(beans);
 
@@ -114,22 +114,22 @@ public class MainActivity extends AppCompatActivity {
         adapter.setFooterClickListener(new FooterClickListener() {
             @Override
             public void onFooterClick() {
-                rv.setLoading();
+                tangram.setLoading();
                 loadData();
             }
         });
 
 
-        rv.setCompatAdapter(adapter);
+        tangram.setCompatAdapter(adapter);
 
-        rv.setLoadMoreListener(new LoadMoreListener() {
+        tangram.setLoadMoreListener(new LoadMoreListener() {
             @Override
             public void onLoadMore() {
 
                 if (x < 5) {
                     loadData();
                 } else {
-                    rv.setClosure();
+                    tangram.setClosure();
                     Log.i("Tangram", "x ================================================== " + x);
                 }
 
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        rv.postDelayed(new Runnable() {
+        tangram.postDelayed(new Runnable() {
             @Override
             public void run() {
 
@@ -165,9 +165,9 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("Tangram", "i ======================================================================== " + result);
 
                 if (result % 3 == 0) {
-                    rv.setFailure();
+                    tangram.setFailure();
                 } else {
-                    rv.setSuccess(s);
+                    tangram.setSuccess(s);
                     x++;
                 }
             }
