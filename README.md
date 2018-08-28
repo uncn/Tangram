@@ -130,3 +130,28 @@ public class RecyclerAdapter extends TangramAdapter implements GridSpanSizeListe
 
 }
 ```
+
+**Step 5**. Use in activity
+
+```java
+TangramView tangram = findViewById(R.id.tangram);
+ArrayList<TangramBean> beans = new ArrayList<>();
+
+for (int i = 0; i < 1; i++) {
+    beans.add(new Item());
+}
+for (int i = 0; i < 9; i++) {
+    beans.add(new Done());
+}
+for (int i = 0; i < 1; i++) {
+    beans.add(new Item());
+}
+for (int i = 0; i < 9; i++) {
+    beans.add(new Done());
+}
+
+tangram.setLayoutManager(new GridLayoutManager(this, 6));
+adapter = new RecyclerAdapter();
+adapter.setData(beans);
+tangram.setCompatAdapter(adapter);
+```
