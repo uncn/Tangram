@@ -4,19 +4,19 @@ import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
 
-import com.sunzn.tangram.library.adapter.RecyclerWarpAdapter;
-import com.sunzn.tangram.library.bean.BaseViewBean;
+import com.sunzn.tangram.library.adapter.TangramAdapter;
+import com.sunzn.tangram.library.bean.TangramBean;
 
 /**
  * Created by sunzn on 2017/9/5.
  */
 
-public abstract class BaseViewHolder<T1 extends BaseViewBean, T2 extends RecyclerWarpAdapter> extends RecyclerView.ViewHolder {
+public abstract class TangramViewHolder<T1 extends TangramBean, T2 extends TangramAdapter> extends RecyclerView.ViewHolder {
 
     private SparseArray<View> mViews;
     private View mItemView;
 
-    public BaseViewHolder(View itemView, T2 adapter) {
+    public TangramViewHolder(View itemView, T2 adapter) {
         super(itemView);
         mViews = new SparseArray<>();
         this.mItemView = itemView;

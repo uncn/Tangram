@@ -11,8 +11,8 @@ import android.widget.ViewAnimator;
 
 import com.sunzn.tangram.library.R;
 import com.sunzn.tangram.library.annotation.LayoutAnnotation;
-import com.sunzn.tangram.library.bean.BaseViewBean;
-import com.sunzn.tangram.library.holder.BaseViewHolder;
+import com.sunzn.tangram.library.bean.TangramBean;
+import com.sunzn.tangram.library.holder.TangramViewHolder;
 import com.sunzn.tangram.library.holder.FootViewHolder;
 import com.sunzn.tangram.library.interfaces.FooterClickListener;
 import com.sunzn.tangram.library.interfaces.GridSpanSizeListener;
@@ -25,9 +25,9 @@ import java.util.List;
  * Created by sunzn on 2016/12/27.
  */
 
-public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends RecyclerView.Adapter<BaseViewHolder> implements View.OnClickListener {
+public abstract class TangramAdapter<T extends TangramBean> extends RecyclerView.Adapter<TangramViewHolder> implements View.OnClickListener {
 
-    public abstract BaseViewHolder onCreateViewHolder(int viewType, View itemView);
+    public abstract TangramViewHolder onCreateViewHolder(int viewType, View itemView);
 
     public static final int FOOT_STATE_LOAD = 0;
     public static final int FOOT_STATE_FAIL = 1;
@@ -49,11 +49,11 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
 
     private HashMap<Class, Integer> LayoutPool = new HashMap<>();
 
-    public RecyclerWarpAdapter() {
+    public TangramAdapter() {
         super();
     }
 
-    public RecyclerWarpAdapter(List<T> beans) {
+    public TangramAdapter(List<T> beans) {
         mBeans = beans;
     }
 
@@ -142,7 +142,7 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
 
     @NonNull
     @Override
-    public BaseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TangramViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType != VIEW_TYPE_FOOT) {
             Context context = parent.getContext();
             View itemView = LayoutInflater.from(context).inflate(viewType, parent, false);
@@ -157,7 +157,7 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BaseViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TangramViewHolder holder, int position) {
         if (position < getBeanCount()) {
             holder.bindView(mBeans.get(position), position, this);
         } else {
@@ -174,7 +174,7 @@ public abstract class RecyclerWarpAdapter<T extends BaseViewBean> extends Recycl
     public int getItemViewType(int position) {
 
         if (position < getBeanCount()) {
-            Class<? extends BaseViewBean> clazz = mBeans.get(position).getClass();
+            Class<? extends TangramBean> clazz = mBeans.get(position).getClass();
             if (LayoutPool.get(clazz) != null) {
                 return LayoutPool.get(clazz);
             } else {

@@ -9,8 +9,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 
 import com.sunzn.tangram.library.R;
-import com.sunzn.tangram.library.adapter.RecyclerWarpAdapter;
-import com.sunzn.tangram.library.bean.BaseViewBean;
+import com.sunzn.tangram.library.adapter.TangramAdapter;
+import com.sunzn.tangram.library.bean.TangramBean;
 import com.sunzn.tangram.library.interfaces.LoadMoreListener;
 
 import java.util.ArrayList;
@@ -20,29 +20,29 @@ import java.util.List;
  * Created by sunzn on 2017/9/5.
  */
 
-public class RecyclerCompatView extends RecyclerView {
+public class TangramView extends RecyclerView {
 
     private boolean hasMore = true;
     private boolean isProcess = false;
-    private RecyclerWarpAdapter mAdapter;
+    private TangramAdapter mAdapter;
     private LoadMoreListener mLoadMoreListener;
     private ArrayList<Integer> mFootViewIDs = new ArrayList<>();
 
-    public RecyclerCompatView(Context context) {
+    public TangramView(Context context) {
         this(context, null);
     }
 
-    public RecyclerCompatView(Context context, @Nullable AttributeSet attrs) {
+    public TangramView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public RecyclerCompatView(Context context, @Nullable AttributeSet attrs, int defStyle) {
+    public TangramView(Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.RecyclerCompatView);
-        int mFooterLoadView = typedArray.getResourceId(R.styleable.RecyclerCompatView_FooterLoad, -1);
-        int mFooterFailView = typedArray.getResourceId(R.styleable.RecyclerCompatView_FooterFail, -1);
-        int mFooterDoneView = typedArray.getResourceId(R.styleable.RecyclerCompatView_FooterDone, -1);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.TangramView);
+        int mFooterLoadView = typedArray.getResourceId(R.styleable.TangramView_FooterLoad, -1);
+        int mFooterFailView = typedArray.getResourceId(R.styleable.TangramView_FooterFail, -1);
+        int mFooterDoneView = typedArray.getResourceId(R.styleable.TangramView_FooterDone, -1);
 
         if (mFooterLoadView != -1) mFootViewIDs.add(mFooterLoadView);
         if (mFooterFailView != -1) mFootViewIDs.add(mFooterFailView);
@@ -51,13 +51,13 @@ public class RecyclerCompatView extends RecyclerView {
         typedArray.recycle();
     }
 
-    public <T extends RecyclerWarpAdapter> void setCompatAdapter(T adapter) {
+    public <T extends TangramAdapter> void setCompatAdapter(T adapter) {
         adapter.setFootViews(mFootViewIDs);
         setAdapter(adapter);
         mAdapter = adapter;
     }
 
-    public <T extends BaseViewBean> void setSuccess(List<T> beans) {
+    public <T extends TangramBean> void setSuccess(List<T> beans) {
         mAdapter.addData(beans);
         getAdapter().notifyDataSetChanged();
         setProcess(false);

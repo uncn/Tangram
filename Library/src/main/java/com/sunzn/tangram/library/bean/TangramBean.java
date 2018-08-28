@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by sunzn on 2017/9/5.
  */
 
-public class BaseViewBean implements Serializable {
+public class TangramBean implements Serializable {
 
     // TODO
 
