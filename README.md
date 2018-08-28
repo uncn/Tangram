@@ -156,6 +156,14 @@ adapter.setData(beans);
 tangram.setCompatAdapter(adapter);
 ```
 
+### Attribute
+
+| Attribute  | Describe               | Additional                                                 |
+| ---------- | ---------------------- | ---------------------------------------------------------- |
+| FooterLoad | Footer status for load | If you setLoadMoreListener, this value must never be null. |
+| FooterFail | Footer status for fail | If you setLoadMoreListener, this value must never be null. |
+| FooterDone | Footer status for done | If you setLoadMoreListener, this value must never be null. |
+
 ### License
 ```
 Copyright [2016-2018] sunzn
