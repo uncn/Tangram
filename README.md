@@ -23,3 +23,17 @@ dependencies {
     implementation 'com.github.ShortStickBoy:Tangram:5.2.1'
 }
 ```
+
+### Use
+
+**Step 1**. Add the TangramView to your layout file
+
+```xml
+<com.sunzn.tangram.library.view.TangramView
+    android:id="@+id/tangram"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:FooterDone="@layout/state_view_done"
+    app:FooterFail="@layout/state_view_fail"
+    app:FooterLoad="@layout/state_view_load" />
+```
