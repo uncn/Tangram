@@ -1,5 +1,7 @@
 # Tangram
-Tangram
+
+[![](https://jitpack.io/v/ShortStickBoy/Tangram.svg)](https://jitpack.io/#ShortStickBoy/Tangram)
+[![](https://img.shields.io/badge/License-Apache%202.0-orange.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 ### Gradle
 
