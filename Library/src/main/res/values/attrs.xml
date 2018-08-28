@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <declare-styleable name="RecyclerCompatView">
+    <declare-styleable name="TangramView">
         <attr name="FooterLoad" format="reference" />
         <attr name="FooterFail" format="reference" />
         <attr name="FooterDone" format="reference" />
