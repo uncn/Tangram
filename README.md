@@ -22,7 +22,7 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation 'com.github.ShortStickBoy:Tangram:5.2.1'
+    implementation 'com.github.ShortStickBoy:Tangram:5.2.2'
 }
 ```
 
