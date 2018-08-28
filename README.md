@@ -37,3 +37,15 @@ dependencies {
     app:FooterFail="@layout/state_view_fail"
     app:FooterLoad="@layout/state_view_load" />
 ```
+
+**Step 2**. Bind the view id to the entity class with @LayoutAnnotation
+
+```java
+@LayoutAnnotation(R.layout.item)
+public class Item extends TangramBean {
+
+    private String name;
+    private String pass;
+
+}
+```
