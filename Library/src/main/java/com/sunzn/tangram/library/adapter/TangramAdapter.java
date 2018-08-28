@@ -159,9 +159,9 @@ public abstract class TangramAdapter<T extends TangramBean> extends RecyclerView
     @Override
     public void onBindViewHolder(@NonNull TangramViewHolder holder, int position) {
         if (position < getBeanCount()) {
-            holder.bindView(mBeans.get(position), position, this);
+            holder.onBindViewHolder(mBeans.get(position), position, this);
         } else {
-            holder.bindView(null, position, this);
+            holder.onBindViewHolder(null, position, this);
         }
     }
 

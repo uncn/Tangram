@@ -33,6 +33,6 @@ public abstract class TangramViewHolder<T1 extends TangramBean, T2 extends Tangr
         return (T) view;
     }
 
-    public abstract void bindView(T1 model, int position, T2 adapter);
+    public abstract void onBindViewHolder(T1 model, int position, T2 adapter);
 
 }

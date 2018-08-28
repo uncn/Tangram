@@ -21,7 +21,7 @@ public class FootViewHolder extends TangramViewHolder {
     }
 
     @Override
-    public void bindView(TangramBean model, int position, TangramAdapter adapter) {
+    public void onBindViewHolder(TangramBean model, int position, TangramAdapter adapter) {
         switch (adapter.getFootState()) {
             case FOOT_STATE_LOAD:
                 itemView.setClickable(false);
