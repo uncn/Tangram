@@ -20,6 +20,6 @@ allprojects {
 
 ```groovy
 dependencies {
-    implementation 'com.github.ShortStickBoy:Tangram:5.2.0'
+    implementation 'com.github.ShortStickBoy:Tangram:5.2.1'
 }
 ```
