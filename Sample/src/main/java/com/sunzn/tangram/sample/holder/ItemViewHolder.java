@@ -1,5 +1,6 @@
 package com.sunzn.tangram.sample.holder;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,8 +15,17 @@ import com.sunzn.tangram.sample.bean.Item;
 
 public class ItemViewHolder extends TangramViewHolder<Item, RecyclerAdapter> {
 
-    public ItemViewHolder(View itemView, RecyclerAdapter adapter) {
+    private final String TAG = "ItemViewHolder";
+
+    public ItemViewHolder(final View itemView, RecyclerAdapter adapter) {
         super(itemView, adapter);
+        TextView view = getView(R.id.item_tv);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "item:" + getAdapterPosition());
+            }
+        });
     }
 
     @Override
