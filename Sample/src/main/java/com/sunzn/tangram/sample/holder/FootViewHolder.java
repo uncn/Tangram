@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.sunzn.tangram.library.bean.Border;
 import com.sunzn.tangram.library.holder.TangramViewHolder;
 import com.sunzn.tangram.sample.R;
 import com.sunzn.tangram.sample.RecyclerAdapter;
@@ -28,7 +29,16 @@ public class FootViewHolder extends TangramViewHolder<Foot, RecyclerAdapter> {
     public void onBindViewHolder(Foot model, int position, RecyclerAdapter adapter) {
 
         View holder = getView(R.id.foot_holder);
-        holder.setPadding(20, 0, 20, 0);
+
+        Border border = model.getBorder();
+
+        if (border.isInRange(position)) {
+            int spanCount = 2;
+            int hSpacing = 40;
+            int vSpacing = 15;
+            int column = (position - border.getLower()) % spanCount;
+            holder.setPadding(hSpacing - column * hSpacing / spanCount, vSpacing, (column + 1) * hSpacing / spanCount, vSpacing);
+        }
 
         TextView view = getView(R.id.foot_tv);
         ImageView image = getView(R.id.foot_iv);
