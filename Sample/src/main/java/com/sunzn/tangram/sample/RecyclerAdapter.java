@@ -21,6 +21,12 @@ import java.util.List;
 
 public class RecyclerAdapter extends TangramAdapter implements GridSpanSizeListener {
 
+    public static final int ITEM_HEAD = R.layout.item_head;
+    public static final int ITEM_ITEM = R.layout.item;
+    public static final int ITEM_FOOT = R.layout.foot;
+    public static final int ITEM_DONE = R.layout.done;
+    public static final int ITEM_LINE = R.layout.line;
+
     public RecyclerAdapter() {
         super();
         setSpanSizeListener(this);
@@ -34,15 +40,15 @@ public class RecyclerAdapter extends TangramAdapter implements GridSpanSizeListe
     @Override
     public TangramViewHolder onCreateViewHolder(int viewType, View itemView) {
         switch (viewType) {
-            case R.layout.item_head:
+            case ITEM_HEAD:
                 return new HeadViewHolder(itemView, this);
-            case R.layout.item:
+            case ITEM_ITEM:
                 return new ItemViewHolder(itemView, this);
-            case R.layout.foot:
+            case ITEM_FOOT:
                 return new FootViewHolder(itemView, this);
-            case R.layout.done:
+            case ITEM_DONE:
                 return new DoneViewHolder(itemView, this);
-            case R.layout.line:
+            case ITEM_LINE:
                 return new LineViewHolder(itemView, this);
         }
         return null;
@@ -51,15 +57,15 @@ public class RecyclerAdapter extends TangramAdapter implements GridSpanSizeListe
     @Override
     public int onGetSpanCount(int viewType, GridLayoutManager manager) {
         switch (viewType) {
-            case R.layout.item_head:
+            case ITEM_HEAD:
                 return manager.getSpanCount();
-            case R.layout.item:
+            case ITEM_ITEM:
                 return manager.getSpanCount();
-            case R.layout.foot:
-                return 3;
-            case R.layout.done:
-                return 2;
-            case R.layout.line:
+            case ITEM_FOOT:
+                return manager.getSpanCount() / 2;
+            case ITEM_DONE:
+                return manager.getSpanCount() / 3;
+            case ITEM_LINE:
                 return manager.getSpanCount();
         }
         return manager.getSpanCount();
