@@ -12,8 +12,8 @@ import android.widget.ViewAnimator;
 import com.sunzn.tangram.library.R;
 import com.sunzn.tangram.library.annotation.LayoutAnnotation;
 import com.sunzn.tangram.library.bean.TangramBean;
-import com.sunzn.tangram.library.holder.TangramViewHolder;
 import com.sunzn.tangram.library.holder.FootViewHolder;
+import com.sunzn.tangram.library.holder.TangramViewHolder;
 import com.sunzn.tangram.library.interfaces.FooterClickListener;
 import com.sunzn.tangram.library.interfaces.GridSpanSizeListener;
 
@@ -59,6 +59,10 @@ public abstract class TangramAdapter<T extends TangramBean> extends RecyclerView
 
     public void setData(List<T> beans) {
         mBeans = beans;
+    }
+
+    public List<T> getData() {
+        return mBeans;
     }
 
     public void addData(List<T> beans) {
