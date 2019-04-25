@@ -8,6 +8,14 @@ import java.io.Serializable;
 
 public class TangramBean implements Serializable {
 
-    // TODO
+    private Border border;
+
+    public Border getBorder() {
+        return border;
+    }
+
+    public void setBorder(Border border) {
+        this.border = border;
+    }
 
 }
