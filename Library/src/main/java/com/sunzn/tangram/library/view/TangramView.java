@@ -2,6 +2,7 @@ package com.sunzn.tangram.library.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -59,7 +60,7 @@ public class TangramView extends RecyclerView {
 
     public <T extends TangramBean> void setSuccess(List<T> beans) {
         mAdapter.addData(beans);
-        getAdapter().notifyDataSetChanged();
+        notifyDataChanged();
         setProcess(false);
     }
 
@@ -67,20 +68,24 @@ public class TangramView extends RecyclerView {
         setHasMore(true);
         setProcess(true);
         mAdapter.setFootStateLoad();
-        getAdapter().notifyDataSetChanged();
+        notifyDataChanged();
     }
 
     public void setFailure() {
         setProcess(true);
         mAdapter.setFootStateFail();
-        getAdapter().notifyDataSetChanged();
+        notifyDataChanged();
     }
 
     public void setClosure() {
         setHasMore(false);
         setProcess(false);
         mAdapter.setTerminal();
-        getAdapter().notifyDataSetChanged();
+        notifyDataChanged();
+    }
+
+    public void notifyDataChanged() {
+        if (getAdapter() != null) getAdapter().notifyDataSetChanged();
     }
 
     public void setHasMore(boolean more) {
@@ -100,12 +105,12 @@ public class TangramView extends RecyclerView {
         if (mFootViewIDs != null && mFootViewIDs.size() == 3) {
             this.addOnScrollListener(new OnScrollListener() {
                 @Override
-                public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                     super.onScrollStateChanged(recyclerView, newState);
                 }
 
                 @Override
-                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                     super.onScrolled(recyclerView, dx, dy);
                     if (mLoadMoreListener != null && !isProcess && hasMore) {
                         LayoutManager manager = getLayoutManager();
