@@ -11,15 +11,15 @@ public class Border implements Serializable, Parcelable {
 
     private int upper;
 
-    private int place;
+    private int repos;
 
     public Border() {
     }
 
-    public Border(int lower, int upper, int place) {
+    public Border(int lower, int upper, int repos) {
         this.lower = lower;
         this.upper = upper;
-        this.place = place;
+        this.repos = repos;
     }
 
     public int getLower() {
@@ -38,12 +38,12 @@ public class Border implements Serializable, Parcelable {
         this.upper = upper;
     }
 
-    public int getPlace() {
-        return place;
+    public int getRepos() {
+        return repos;
     }
 
-    public void setPlace(int place) {
-        this.place = place;
+    public void setRepos(int repos) {
+        this.repos = repos;
     }
 
     public boolean isInRange(int position) {
@@ -53,7 +53,7 @@ public class Border implements Serializable, Parcelable {
     private Border(Parcel in) {
         lower = in.readInt();
         upper = in.readInt();
-        place = in.readInt();
+        repos = in.readInt();
     }
 
     public static final Creator<Border> CREATOR = new Creator<Border>() {
@@ -77,6 +77,6 @@ public class Border implements Serializable, Parcelable {
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(lower);
         dest.writeInt(upper);
-        dest.writeInt(place);
+        dest.writeInt(repos);
     }
 }
