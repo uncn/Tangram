@@ -16,6 +16,11 @@ public class Border implements Serializable, Parcelable {
     public Border() {
     }
 
+    public Border(int lower, int upper) {
+        this.lower = lower;
+        this.upper = upper;
+    }
+
     public Border(int lower, int upper, int repos) {
         this.lower = lower;
         this.upper = upper;
