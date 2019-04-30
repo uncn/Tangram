@@ -2,12 +2,14 @@ package com.sunzn.tangram.library.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Rect;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 
 import com.sunzn.tangram.library.R;
 import com.sunzn.tangram.library.adapter.TangramAdapter;
@@ -129,6 +131,19 @@ public class TangramView extends RecyclerView {
         } else {
             throw new IllegalArgumentException("init ScrollListener must set FooterLoad, FooterFail, FooterDone attribute");
         }
+    }
+
+    public abstract static class Decoration extends ItemDecoration {
+
+        public abstract void onDecoration(int position, @NonNull Rect outRect);
+
+        @Override
+        public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull State state) {
+            super.getItemOffsets(outRect, view, parent, state);
+            int position = parent.getChildAdapterPosition(view);
+            onDecoration(position, outRect);
+        }
+
     }
 
 }
