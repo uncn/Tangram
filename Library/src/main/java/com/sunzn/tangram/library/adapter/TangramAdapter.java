@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -214,6 +215,18 @@ public abstract class TangramAdapter<T extends TangramBean> extends RecyclerView
                 }
             });
         }
+    }
+
+    @Override
+    public void onViewAttachedToWindow(@NonNull TangramViewHolder holder) {
+        if (holder instanceof FootViewHolder) {
+            ViewGroup.LayoutParams params = holder.itemView.getLayoutParams();
+            if (params instanceof StaggeredGridLayoutManager.LayoutParams) {
+                StaggeredGridLayoutManager.LayoutParams p = (StaggeredGridLayoutManager.LayoutParams) params;
+                p.setFullSpan(true);
+            }
+        }
+        super.onViewAttachedToWindow(holder);
     }
 
 }

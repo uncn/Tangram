@@ -7,8 +7,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 import com.sunzn.tangram.library.R;
@@ -103,33 +103,48 @@ public class TangramView extends RecyclerView {
         initScrollListener();
     }
 
+    @Override
+    public void onScrollStateChanged(int state) {
+        super.onScrollStateChanged(state);
+    }
+
     private void initScrollListener() {
         if (mFootViewIDs != null && mFootViewIDs.size() == 3) {
             this.addOnScrollListener(new OnScrollListener() {
                 @Override
                 public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                     super.onScrollStateChanged(recyclerView, newState);
+                    if (mLoadMoreListener != null && !isProcess && hasMore) {
+                        LayoutManager manager = getLayoutManager();
+                        if (manager != null && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                            int last = findLastVisibleItemPosition(manager);
+                            int total = getAdapter() == null ? 0 : getAdapter().getItemCount();
+                            if (last >= total - 1) {
+                                isProcess = true;
+                                mLoadMoreListener.onLoadMore();
+                            }
+                        }
+                    }
                 }
 
                 @Override
                 public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                     super.onScrolled(recyclerView, dx, dy);
-                    if (mLoadMoreListener != null && !isProcess && hasMore) {
-                        LayoutManager manager = getLayoutManager();
-                        int last = ((LinearLayoutManager) manager).findLastVisibleItemPosition();
-                        int total = getAdapter().getItemCount();
-
-                        Log.e("Tangram", "【最后可见 = " + last + "】【总数 = " + total + "】【是否加载中 = " + isProcess + "】");
-
-                        if (last >= total - 1) {
-                            isProcess = true;
-                            mLoadMoreListener.onLoadMore();
-                        }
-                    }
                 }
             });
         } else {
             throw new IllegalArgumentException("init ScrollListener must set FooterLoad, FooterFail, FooterDone attribute");
+        }
+    }
+
+    private int findLastVisibleItemPosition(LayoutManager manager) {
+        if (manager instanceof StaggeredGridLayoutManager) {
+            int[] last = ((StaggeredGridLayoutManager) manager).findLastVisibleItemPositions(null);
+            return last[last.length - 1];
+        } else if (manager instanceof LinearLayoutManager) {
+            return ((LinearLayoutManager) manager).findLastVisibleItemPosition();
+        } else {
+            return 0;
         }
     }
 
