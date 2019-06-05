@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
 
@@ -125,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
 //        rv.setLayoutManager(new LinearLayoutManager(this));
 
         tangram.setLayoutManager(new GridLayoutManager(this, 6));
+//        tangram.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
 
 //        adapter = new RecyclerAdapter(beans);
 
