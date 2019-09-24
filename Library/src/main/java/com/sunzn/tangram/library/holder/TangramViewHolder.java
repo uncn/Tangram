@@ -1,5 +1,6 @@
 package com.sunzn.tangram.library.holder;
 
+import android.support.annotation.IdRes;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
@@ -22,7 +23,7 @@ public abstract class TangramViewHolder<T1 extends TangramBean, T2 extends Tangr
         this.mItemView = itemView;
     }
 
-    public <T extends View> T getView(int resID) {
+    public <T extends View> T getView(@IdRes int resID) {
         View view = mViews.get(resID);
 
         if (view == null) {
