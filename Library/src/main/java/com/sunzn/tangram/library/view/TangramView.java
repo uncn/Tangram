@@ -66,6 +66,13 @@ public class TangramView extends RecyclerView {
         setProcess(false);
     }
 
+    public void setInitial() {
+        setHasMore(true);
+        setProcess(false);
+        mAdapter.setFootStateLoad();
+        notifyDataChanged();
+    }
+
     public void setLoading() {
         setHasMore(true);
         setProcess(true);
